@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Vacsora Csata</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <nav class="navbar">
+      <div class="logo">Vacsora Csata</div>
+
+      <div class="nav-links">
+        <a href="#etlap">Étlap</a>
+        <a href="#itallap">Itallap</a>
+        <a href="#feltoltes">Képfeltöltés</a>
+      </div>
+    </nav>
+
+    <div class="hero-content">
+      <span class="hero-label">Gasztroest · Élmény · Közösség</span>
+
+      <h1>Vacsora Csata</h1>
+
+      <p>
+        Egy különleges vacsoraest, ahol az ételek, italok és közös pillanatok
+        kerülnek a középpontba.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#etlap" class="btn btn-light">Étlap megtekintése</a>
+        <a href="#feltoltes" class="btn btn-outline">Képek feltöltése</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="section intro-section">
+      <h2>Az este menüje</h2>
+      <p>
+        Tekintsd meg a Vacsora Csata minta étlapját és itallapját. 
+        A tartalmakat később egyszerűen át tudod írni a saját eseményedhez.
+      </p>
+    </section>
+
+    <section class="section menu-section">
+      <div class="menu-card" id="etlap">
+        <div class="card-header">
+          <h2>Étlap</h2>
+          <span>Minta menü</span>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <h3>Bruschetta válogatás</h3>
+            <p>Paradicsomos, bazsalikomos, fokhagymás pirítós olívaolajjal.</p>
+          </div>
+          <strong>1 990 Ft</strong>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <h3>Krémes sütőtök leves</h3>
+            <p>Pirított tökmaggal, házi fűszerolajjal és ropogós feltéttel.</p>
+          </div>
+          <strong>2 290 Ft</strong>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <h3>Rozmaringos csirkemell</h3>
+            <p>Grillezett zöldségekkel, burgonyapürével és pecsenyelével.</p>
+          </div>
+          <strong>4 490 Ft</strong>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <h3>Házi tiramisu</h3>
+            <p>Kávés piskóta, mascarpone krém és kakaópor rétegezve.</p>
+          </div>
+          <strong>1 890 Ft</strong>
+        </div>
+      </div>
+
+      <div class="menu-card" id="itallap">
+        <div class="card-header">
+          <h2>Itallap</h2>
+          <span>Minta italok</span>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <h3>Házi limonádé</h3>
+            <p>Citrom, narancs, menta és szóda friss kombinációja.</p>
+          </div>
+          <strong>1 290 Ft</strong>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <h3>Espresso tonic</h3>
+            <p>Jeges tonic frissen főzött espressóval, citrusos karakterrel.</p>
+          </div>
+          <strong>1 590 Ft</strong>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <h3>Vörös házibor</h3>
+            <p>Közepesen testes, vacsorához jól illő vörösbor.</p>
+          </div>
+          <strong>990 Ft / dl</strong>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <h3>Alkoholmentes koktél</h3>
+            <p>Gyümölcsös, frissítő mocktail jéggel és citrusokkal.</p>
+          </div>
+          <strong>1 790 Ft</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="section upload-section" id="feltoltes">
+      <div class="upload-box">
+        <h2>Képfeltöltés</h2>
+        <p>
+          Válaszd ki az eseményen készült képeket. A kiválasztott képek
+          előnézetként megjelennek az oldalon.
+        </p>
+
+        <button id="cloudinaryUploadButton" class="upload-label" type="button">
+            Képek feltöltése
+        </button>
+
+        <p class="upload-note">
+            Engedélyezett formátumok: JPG, PNG, WEBP. A képek Cloudinary tárhelyre kerülnek.
+        </p>
+
+        <div id="uploadStatus" class="upload-status"></div>
+        <div id="previewContainer" class="preview-grid"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Vacsora Csata · Minden jog fenntartva</p>
+  </footer>
+
+  <script src="https://upload-widget.cloudinary.com/latest/global/all.js" type="text/javascript"></script>
+  <script src="script.js"></script>
+</body>
+</html>
