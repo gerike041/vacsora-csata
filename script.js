@@ -1,12 +1,13 @@
 const uploadButton = document.getElementById("cloudinaryUploadButton");
 const uploadStatus = document.getElementById("uploadStatus");
-const previewContainer = document.getElementById("previewContainer");
 
-// 1. Ide írd be a saját Cloudinary cloud name-edet
+
 const CLOUD_NAME = "dkkddwlak";
-
-// 2. Ide írd be az unsigned upload preset nevét
 const UPLOAD_PRESET = "vacsoracsata";
+const GALLERY_TAG = "vacsora-csata";
+
+let galleryImages = [];
+let currentSlideIndex = 0;
 
 const uploadWidget = cloudinary.createUploadWidget(
   {
@@ -17,6 +18,7 @@ const uploadWidget = cloudinary.createUploadWidget(
     maxFiles: 10,
     resourceType: "image",
     folder: "vacsora-csata",
+    tags: [GALLERY_TAG],
     clientAllowedFormats: ["jpg", "jpeg", "png", "webp"],
     maxFileSize: 8000000,
     cropping: false
@@ -32,18 +34,20 @@ const uploadWidget = cloudinary.createUploadWidget(
       uploadStatus.textContent = "Sikeres képfeltöltés.";
 
       const imageUrl = result.info.secure_url;
+      const publicId = result.info.public_id;
 
-      const previewCard = document.createElement("div");
-      previewCard.classList.add("preview-card");
+      const newImage = {
+        publicId: publicId,
+        fullUrl: imageUrl,
+        thumbUrl: imageUrl
+      };
 
-      const image = document.createElement("img");
-      image.src = imageUrl;
-      image.alt = "Feltöltött kép";
+      galleryImages.unshift(newImage);
 
-      previewCard.appendChild(image);
-      previewContainer.prepend(previewCard);
+      currentSlideIndex = 0;
+      renderSlideshow();
 
-      console.log("Feltöltött kép URL:", imageUrl);
+      console.log("Új feltöltött kép:", newImage);
     }
   }
 );
@@ -51,3 +55,106 @@ const uploadWidget = cloudinary.createUploadWidget(
 uploadButton.addEventListener("click", function () {
   uploadWidget.open();
 });
+
+function getOptimizedImageUrl(publicId) {
+  return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/c_fill,w_900,h_650,q_auto,f_auto/${publicId}`;
+}
+
+function getThumbnailUrl(publicId) {
+  return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/c_fill,w_500,h_500,q_auto,f_auto/${publicId}`;
+}
+
+async function loadCloudinaryGallery() {
+  try {
+    const listUrl = `https://res.cloudinary.com/${CLOUD_NAME}/image/list/${GALLERY_TAG}.json`;
+
+    const response = await fetch(listUrl);
+
+    if (!response.ok) {
+      throw new Error("A galéria betöltése nem sikerült.");
+    }
+
+    const data = await response.json();
+
+    galleryImages = data.resources.map(function (resource) {
+      return {
+        publicId: resource.public_id,
+        fullUrl: getOptimizedImageUrl(resource.public_id),
+        thumbUrl: getThumbnailUrl(resource.public_id)
+      };
+    });
+
+    
+    renderSlideshow();
+
+  } catch (error) {
+    console.error(error);
+    uploadStatus.textContent = "A galéria betöltése nem sikerült. Ellenőrizd a Cloudinary Resource list beállítást.";
+  }
+}
+
+
+
+
+function renderSlideshow() {
+  const slideshowImage = document.getElementById("slideshowImage");
+  const slideshowCounter = document.getElementById("slideshowCounter");
+
+  if (!slideshowImage || !slideshowCounter) {
+    return;
+  }
+
+  if (galleryImages.length === 0) {
+    slideshowImage.src = "";
+    slideshowImage.alt = "";
+    slideshowCounter.textContent = "Nincs feltöltött kép";
+    return;
+  }
+
+  slideshowImage.src = galleryImages[currentSlideIndex].fullUrl;
+  slideshowImage.alt = "Vacsora Csata slideshow kép";
+  slideshowCounter.textContent = `${currentSlideIndex + 1} / ${galleryImages.length}`;
+}
+
+function nextSlide() {
+  if (galleryImages.length === 0) return;
+
+  currentSlideIndex++;
+
+  if (currentSlideIndex >= galleryImages.length) {
+    currentSlideIndex = 0;
+  }
+
+  renderSlideshow();
+}
+
+function previousSlide() {
+  if (galleryImages.length === 0) return;
+
+  currentSlideIndex--;
+
+  if (currentSlideIndex < 0) {
+    currentSlideIndex = galleryImages.length - 1;
+  }
+
+  renderSlideshow();
+}
+
+const nextButton = document.getElementById("nextSlide");
+const prevButton = document.getElementById("prevSlide");
+
+if (nextButton) {
+  nextButton.addEventListener("click", nextSlide);
+}
+
+if (prevButton) {
+  prevButton.addEventListener("click", previousSlide);
+}
+
+setInterval(function () {
+  if (galleryImages.length > 1) {
+    nextSlide();
+  }
+}, 5000);
+
+loadCloudinaryGallery();

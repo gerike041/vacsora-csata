@@ -43,110 +43,145 @@
     <section class="section intro-section">
       <h2>Az este menüje</h2>
       <p>
-        Tekintsd meg a Vacsora Csata minta étlapját és itallapját. 
-        A tartalmakat később egyszerűen át tudod írni a saját eseményedhez.
+        Tekintsd meg a Vacsora Csata étlapját és itallapját.
       </p>
     </section>
 
     <section class="section menu-section">
+
       <div class="menu-card" id="etlap">
         <div class="card-header">
           <h2>Étlap</h2>
-          <span>Minta menü</span>
+          <span>Menü</span>
         </div>
 
         <div class="menu-item">
           <div>
-            <h3>Bruschetta válogatás</h3>
-            <p>Paradicsomos, bazsalikomos, fokhagymás pirítós olívaolajjal.</p>
+            <h3>Grill húsok</h3>
+            <p>
+              Frissen grillezett, fűszeres húsok ropogós külsővel és omlós belsővel,
+              igazi vacsora csata hangulathoz.
+            </p>
           </div>
-          <strong>1 990 Ft</strong>
         </div>
 
         <div class="menu-item">
           <div>
-            <h3>Krémes sütőtök leves</h3>
-            <p>Pirított tökmaggal, házi fűszerolajjal és ropogós feltéttel.</p>
+            <h3>Sütőben sült burgonya</h3>
+            <p>
+              Aranybarnára sült burgonya, kívül enyhén ropogós, belül puha állaggal,
+              tökéletes köret a grill húsok mellé.
+            </p>
           </div>
-          <strong>2 290 Ft</strong>
         </div>
 
         <div class="menu-item">
           <div>
-            <h3>Rozmaringos csirkemell</h3>
-            <p>Grillezett zöldségekkel, burgonyapürével és pecsenyelével.</p>
+            <h3>Majonézes kukoricasaláta</h3>
+            <p>
+              Krémes, hideg kukoricasaláta majonézes alappal, frissítő és lágy
+              kiegészítőként a főételek mellé.
+            </p>
           </div>
-          <strong>4 490 Ft</strong>
         </div>
 
         <div class="menu-item">
           <div>
-            <h3>Házi tiramisu</h3>
-            <p>Kávés piskóta, mascarpone krém és kakaópor rétegezve.</p>
+            <h3>Citromos süti</h3>
+            <p>
+              Könnyed, frissítő citromos desszert, amely kellemesen savanykás ízével
+              zárja le az estét.
+            </p>
           </div>
-          <strong>1 890 Ft</strong>
         </div>
       </div>
 
       <div class="menu-card" id="itallap">
         <div class="card-header">
           <h2>Itallap</h2>
-          <span>Minta italok</span>
+          <span>Italok</span>
         </div>
 
         <div class="menu-item">
           <div>
-            <h3>Házi limonádé</h3>
-            <p>Citrom, narancs, menta és szóda friss kombinációja.</p>
+            <h3>Fanta Zero</h3>
+            <p>
+              Cukormentes, narancsos szénsavas üdítő, könnyed és frissítő
+              választás az este mellé.
+            </p>
           </div>
-          <strong>1 290 Ft</strong>
         </div>
 
         <div class="menu-item">
           <div>
-            <h3>Espresso tonic</h3>
-            <p>Jeges tonic frissen főzött espressóval, citrusos karakterrel.</p>
+            <h3>Zero Cherry Coca-Cola</h3>
+            <p>
+              Cukormentes Coca-Cola meggyes ízesítéssel, jéghidegen kínálva.
+            </p>
           </div>
-          <strong>1 590 Ft</strong>
         </div>
 
         <div class="menu-item">
           <div>
-            <h3>Vörös házibor</h3>
-            <p>Közepesen testes, vacsorához jól illő vörösbor.</p>
+            <h3>Pilsner 0,5</h3>
+            <p>
+              Klasszikus világos sör, frissítő komlós ízzel,
+              0,5 literes kiszerelésben.
+            </p>
           </div>
-          <strong>990 Ft / dl</strong>
         </div>
 
         <div class="menu-item">
           <div>
-            <h3>Alkoholmentes koktél</h3>
-            <p>Gyümölcsös, frissítő mocktail jéggel és citrusokkal.</p>
+            <h3>Fröccs</h3>
+            <p>
+              Borból és szódából készült frissítő ital, könnyed választás
+              vacsora mellé.
+            </p>
           </div>
-          <strong>1 790 Ft</strong>
         </div>
       </div>
+
     </section>
 
     <section class="section upload-section" id="feltoltes">
       <div class="upload-box">
         <h2>Képfeltöltés</h2>
         <p>
-          Válaszd ki az eseményen készült képeket. A kiválasztott képek
-          előnézetként megjelennek az oldalon.
+          Válaszd ki az eseményen készült képeket. A feltöltött képek
+          Cloudinary tárhelyre kerülnek, majd a galériában is megjelennek.
         </p>
 
         <button id="cloudinaryUploadButton" class="upload-label" type="button">
-            Képek feltöltése
+          Képek feltöltése
         </button>
 
         <p class="upload-note">
-            Engedélyezett formátumok: JPG, PNG, WEBP. A képek Cloudinary tárhelyre kerülnek.
+          Engedélyezett formátumok: JPG, PNG, WEBP.
         </p>
 
         <div id="uploadStatus" class="upload-status"></div>
-        <div id="previewContainer" class="preview-grid"></div>
       </div>
+    </section>
+
+    <section class="section gallery-section" id="galeria">
+      <div class="section-title">
+        <h2>Galéria</h2>
+        <p>Az eseményre feltöltött képek egy helyen.</p>
+      </div>
+
+      <div class="slideshow" id="slideshow">
+        <button class="slide-btn" id="prevSlide" type="button">‹</button>
+
+        <div class="slide-image-wrap">
+          <img id="slideshowImage" src="" alt="">
+          <span id="slideshowCounter" class="slide-counter">Betöltés...</span>
+        </div>
+
+        <button class="slide-btn" id="nextSlide" type="button">›</button>
+      </div>
+
+      
     </section>
 
   </main>
