@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Vacsora Csata</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <nav class="navbar">
+      <div class="logo">Vacsora Csata</div>
+
+      <div class="nav-links">
+        <a href="#etlap">Étlap</a>
+        <a href="#itallap">Itallap</a>
+        <a href="#feltoltes">Képfeltöltés</a>
+      </div>
+    </nav>
+
+    <div class="hero-content">
+      <span class="hero-label">Gasztroest · Élmény · Közösség</span>
+
+      <h1>Vacsora Csata</h1>
+
+      <p>
+        Egy különleges vacsoraest, ahol az ételek, italok és közös pillanatok
+        kerülnek a középpontba.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#etlap" class="btn btn-light">Étlap megtekintése</a>
+        <a href="#feltoltes" class="btn btn-outline">Képek feltöltése</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="section intro-section">
+      <h2>Az este menüje</h2>
+      <p>
+        Tekintsd meg a Vacsora Csata étlapját és itallapját.
+      </p>
+    </section>
+
+    <section class="section menu-section">
+
+      <div class="menu-card" id="etlap">
+        <div class="card-header">
+          <h2>Étlap</h2>
+          <span>Menü</span>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <h3>Grill húsok</h3>
+            <p>
+              Frissen grillezett, fűszeres húsok ropogós külsővel és omlós belsővel,
+              igazi vacsora csata hangulathoz.
+            </p>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <h3>Sütőben sült burgonya</h3>
+            <p>
+              Aranybarnára sült burgonya, kívül enyhén ropogós, belül puha állaggal,
+              tökéletes köret a grill húsok mellé.
+            </p>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <h3>Majonézes kukoricasaláta</h3>
+            <p>
+              Krémes, hideg kukoricasaláta majonézes alappal, frissítő és lágy
+              kiegészítőként a főételek mellé.
+            </p>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <h3>Citromos süti</h3>
+            <p>
+              Könnyed, frissítő citromos desszert, amely kellemesen savanykás ízével
+              zárja le az estét.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card" id="itallap">
+        <div class="card-header">
+          <h2>Itallap</h2>
+          <span>Italok</span>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <h3>Fanta Zero</h3>
+            <p>
+              Cukormentes, narancsos szénsavas üdítő, könnyed és frissítő
+              választás az este mellé.
+            </p>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <h3>Zero Cherry Coca-Cola</h3>
+            <p>
+              Cukormentes Coca-Cola meggyes ízesítéssel, jéghidegen kínálva.
+            </p>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <h3>Pilsner 0,5</h3>
+            <p>
+              Klasszikus világos sör, frissítő komlós ízzel,
+              0,5 literes kiszerelésben.
+            </p>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <h3>Fröccs</h3>
+            <p>
+              Borból és szódából készült frissítő ital, könnyed választás
+              vacsora mellé.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="section upload-section" id="feltoltes">
+      <div class="upload-box">
+        <h2>Képfeltöltés</h2>
+        <p>
+          Válaszd ki az eseményen készült képeket. A feltöltött képek
+          Cloudinary tárhelyre kerülnek, majd a galériában is megjelennek.
+        </p>
+
+        <button id="cloudinaryUploadButton" class="upload-label" type="button">
+          Képek feltöltése
+        </button>
+
+        <p class="upload-note">
+          Engedélyezett formátumok: JPG, PNG, WEBP.
+        </p>
+
+        <div id="uploadStatus" class="upload-status"></div>
+      </div>
+    </section>
+
+    <section class="section gallery-section" id="galeria">
+      <div class="section-title">
+        <h2>Galéria</h2>
+        <p>Az eseményre feltöltött képek egy helyen.</p>
+      </div>
+
+      <div class="slideshow" id="slideshow">
+        <button class="slide-btn" id="prevSlide" type="button">‹</button>
+
+        <div class="slide-image-wrap">
+          <img id="slideshowImage" src="" alt="">
+          <span id="slideshowCounter" class="slide-counter">Betöltés...</span>
+        </div>
+
+        <button class="slide-btn" id="nextSlide" type="button">›</button>
+      </div>
+
+      
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Vacsora Csata · Minden jog fenntartva</p>
+  </footer>
+
+  <script src="https://upload-widget.cloudinary.com/latest/global/all.js" type="text/javascript"></script>
+  <script src="script.js"></script>
+</body>
+</html>
